@@ -1,27 +1,27 @@
+name: Build and SonarCloud
+
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
   pull_request:
-      types: [opened, synchronize, reopened]
-name: SonarCloud
+    branches: [ master ]
+
 jobs:
-  sonarcloud:
+  build:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
+
+    - name: Cache Maven packages
+      uses: actions/cache@v2
       with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+
+    - name: Build and analyze with SonarCloud
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        # Add the Maven goal to the command
-        MAVEN_OPTS: '-Dsonar.projectKey=Node-23_Library_Project -Dsonar.java.source=17 -Dsonar.java.target=17'
-        SONAR_SCANNER_OPTS: '-Xmx1024m'
-        # Use the default Maven command for building the project
-        # Add the 'sonar' goal to the command
-        # You may need to modify the path to your pom.xml file if it's not in the root directory
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar -Dmaven.test.failure.ignore=true
+      run: mvn clean verify sonar:sonar -Dsonar.projectKey=Node-23_Library_Project -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=node-23 -Dsonar.login=${{ secrets.SONAR_TOKEN }}
