@@ -22,13 +22,11 @@ public class UIService {
         System.out.println("|#----------------------------#|\n");
     }
 
-    public static void lineOutput(String text){
+    public static String lineOutput(String text){
         if(text.trim().length() <= TEXT_MAX_SIZE){
-            String output = "| " + text.trim() +
+            return "| " + text.trim() +
                     fillWithSpace(TEXT_MAX_SIZE - text.trim().length()) +
                     " |";
-            System.out.println(output);
-            return;
         }
 
         int linesCount = (int) Math.ceil((double) text.length() / TEXT_MAX_SIZE);
@@ -42,7 +40,7 @@ public class UIService {
         for (int i = 0; i < arr.length; i++) {
             output.append("| ").append(arr[i]).append(i == arr.length-1? fillWithSpace(TEXT_MAX_SIZE - arr[i].length()) + " |":"- |\n");
         }
-        System.out.println(output);
+        return output.toString();
     }
 
     private static String fillWithSpace(int spaceCount){
