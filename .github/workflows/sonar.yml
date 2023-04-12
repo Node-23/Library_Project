@@ -18,3 +18,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # Add the Maven goal to the command
+        MAVEN_OPTS: '-Dsonar.projectKey=Node-23_Library_Project -Dsonar.java.source=17 -Dsonar.java.target=17'
+        SONAR_SCANNER_OPTS: '-Xmx1024m'
+        # Use the default Maven command for building the project
+        # Add the 'sonar' goal to the command
+        # You may need to modify the path to your pom.xml file if it's not in the root directory
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar -Dmaven.test.failure.ignore=true
