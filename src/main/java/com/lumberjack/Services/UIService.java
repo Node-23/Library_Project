@@ -3,7 +3,8 @@ package com.lumberjack.Services;
 import java.util.Scanner;
 
 public class UIService {
-    static Scanner input = new Scanner (System.in);
+    private static final Scanner input = new Scanner (System.in);
+    private static final int TEXT_MAX_SIZE = 28;
 
     public static int getUserOption(){
         return input.nextInt();
@@ -22,14 +23,10 @@ public class UIService {
     }
 
     public static void lineOutput(String text){
-        final int TEXT_MAX_SIZE = 28;
         if(text.trim().length() <= TEXT_MAX_SIZE){
-            StringBuilder output = new StringBuilder("| ");
-            output.append(text.trim());
-            for (int i = 0; i < TEXT_MAX_SIZE - text.trim().length(); i++) {
-                output.append(" ");
-            }
-            output.append(" |");
+            String output = "| " + text.trim() +
+                    fillWithSpace(TEXT_MAX_SIZE - text.trim().length()) +
+                    " |";
             System.out.println(output);
             return;
         }
@@ -38,13 +35,17 @@ public class UIService {
         String[] arr = new String[linesCount];
 
         for (int i = 0; i < linesCount; i++) {
-            arr[i] = text.substring(i * TEXT_MAX_SIZE, Math.min((i + 1) * TEXT_MAX_SIZE, text.length()));
+            arr[i] = text.substring(i * (TEXT_MAX_SIZE -1), Math.min((i + 1) * (TEXT_MAX_SIZE -1), text.length()));
         }
 
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
-            output.append("| ").append(arr[i]).append(i == arr.length-1? " |":" |\n");
+            output.append("| ").append(arr[i]).append(i == arr.length-1? fillWithSpace(TEXT_MAX_SIZE - arr[i].length()) + " |":"- |\n");
         }
         System.out.println(output);
+    }
+
+    private static String fillWithSpace(int spaceCount){
+        return " ".repeat(spaceCount);
     }
 }
