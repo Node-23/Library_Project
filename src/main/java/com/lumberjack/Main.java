@@ -1,5 +1,6 @@
 package com.lumberjack;
 
+import com.lumberjack.Models.Book;
 import com.lumberjack.Services.UIService;
 
 public class Main {
@@ -10,5 +11,9 @@ public class Main {
         System.out.println(UIService.lineOutput("Opção 2 - Ver Livros"));
         System.out.println( UIService.lineOutput("Opção 3 - Sair"));
         UIService.FooterOutput();
+        if(UIService.getUserOption() == 2){
+            Book book = new Book("Neuromancer", " William Gibson", false);
+            System.out.println(book.getName());
+        }
     }
 }
