@@ -7,12 +7,10 @@ public class Book {
         private String name;
         private String autor;
         private boolean borrowed;
-
         private String borrowedTo;
         private LocalDateTime borrowedDate;
         private String editora;
         private String edition;
-
         private int year;
         private String synopsis;
         private int yearOfPurchase;
@@ -23,16 +21,18 @@ public class Book {
             this.borrowed=borrowed;
         }
 
-
         public void setName(String name){
             this.name=name;
         }
+        
         public String getName(){
             return this.name;
         }
+        
         public void setAutor(String autor){
             this.autor=autor;
         }
+        
         public String getAutor(){
             return this.autor;
         }
@@ -40,6 +40,7 @@ public class Book {
         public void setBorrowed(boolean borrowed) {
             this.borrowed = borrowed;
         }
+        
         public boolean getBorrowed(){
             return this.borrowed;
         }
@@ -64,9 +65,11 @@ public class Book {
         public void setEditora(String editora){
             this.editora=editora;
         }
+        
         public String getEditora(){
             return this.editora;
         }
+        
         public void setEdition(String edition){
             this.edition=edition;
         }
@@ -98,5 +101,4 @@ public class Book {
         public String getSynopsis() {
             return this.synopsis;
         }
-
 }
