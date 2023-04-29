@@ -23,14 +23,14 @@ public class Book {
             this.borrowed=borrowed;
         }
 
-    public void setId(int id) {
+        public void setId(int id) {
         this.id = id;
-    }
+        }
 
-    public int getId() {
+        public int getId() {
         return id;
-    }
-    public void setName(String name){
+         }
+        public void setName(String name){
             this.name=name;
         }
         
