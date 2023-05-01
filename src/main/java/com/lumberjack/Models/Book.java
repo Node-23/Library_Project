@@ -4,23 +4,32 @@ import java.time.LocalDateTime;
 
 public class Book {
 
+        private int id;
+
         private String name;
-        private String autor;
+        private String author;
         private boolean borrowed;
         private String borrowedTo;
         private LocalDateTime borrowedDate;
-        private String editora;
+        private String publisher;
         private String edition;
         private int year;
         private String synopsis;
         private int yearOfPurchase;
 
-        public Book(String name,String autor,boolean borrowed){
+        public Book(String name,String author,boolean borrowed){
             this.name=name;
-            this.autor=autor;
+            this.author=author;
             this.borrowed=borrowed;
         }
 
+        public void setId(int id) {
+        this.id = id;
+        }
+
+        public int getId() {
+        return id;
+         }
         public void setName(String name){
             this.name=name;
         }
@@ -29,12 +38,12 @@ public class Book {
             return this.name;
         }
         
-        public void setAutor(String autor){
-            this.autor=autor;
+        public void setAuthor(String author){
+            this.author=author;
         }
         
-        public String getAutor(){
-            return this.autor;
+        public String getAuthor(){
+            return this.author;
         }
 
         public void setBorrowed(boolean borrowed) {
@@ -62,12 +71,12 @@ public class Book {
         }
 
 
-        public void setEditora(String editora){
-            this.editora=editora;
+        public void setpublisher(String publisher){
+            this.publisher=publisher;
         }
         
-        public String getEditora(){
-            return this.editora;
+        public String getPublisher(){
+            return this.publisher;
         }
         
         public void setEdition(String edition){
