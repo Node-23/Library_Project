@@ -26,6 +26,7 @@ public class Book {
             this.edition=edition;
             this.year=year;
             this.yearOfPurchase=yearOfPurchase;
+            this.rating = rating;
             this.synopsis=synopsis;
             this.log=log;
         }
