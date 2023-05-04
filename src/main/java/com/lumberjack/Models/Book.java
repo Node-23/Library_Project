@@ -137,8 +137,7 @@ public class Book {
     public ArrayList<String> getLog() {
         return log;
     }
-
-    public void setLog(ArrayList<String> log) {
-        this.log.add("log");
+    public void addlog(String log){
+            this.log.add(log);
     }
 }
