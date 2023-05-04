@@ -1,11 +1,10 @@
 package com.lumberjack.Models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Book {
-
         private int id;
-
         private String name;
         private String author;
         private boolean borrowed;
@@ -16,7 +15,23 @@ public class Book {
         private int year;
         private String synopsis;
         private int yearOfPurchase;
+        private int rating;
+        private ArrayList<String> log = new ArrayList<>();
 
+        public Book(String name,String author,boolean borrowed,String publisher,String edition,int year,String synopsis,int yearOfPurchase, int rating,ArrayList log){
+            this.name=name;
+            this.author=author;
+            this.borrowed=borrowed;
+            this.publisher=publisher;
+            this.edition=edition;
+            this.year=year;
+            this.yearOfPurchase=yearOfPurchase;
+            this.synopsis=synopsis;
+            this.log=log;
+        }
+        public Book(){
+
+        }
         public Book(String name,String author,boolean borrowed){
             this.name=name;
             this.author=author;
@@ -110,4 +125,19 @@ public class Book {
         public String getSynopsis() {
             return this.synopsis;
         }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public ArrayList<String> getLog() {
+        return log;
+    }
+    public void addlog(String log){
+            this.log.add(log);
+    }
 }
