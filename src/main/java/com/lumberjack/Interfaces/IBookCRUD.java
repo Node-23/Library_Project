@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface IBookCRUD {
      public Book Add();
-     public ArrayList<Book> listAll();
+     public List<Book> listAll();
      public Book findById(int id);
      public Book update(Book book);
      public void delete(Book book);
